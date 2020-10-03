@@ -1,0 +1,79 @@
+﻿Algo de gestion du map-reduce
+
+Fct input ok
+entrée :
+un fichier de type csv
+sortie :
+une string contenant tout le fichier
+Action :
+Ouvrir le fichier (prévoir éventuellement plusieurs pilote)
+lire le fichier (attention au codage)
+générer une variable string
+
+Fct Split : ok
+Entrée :
+une var string
+Sortie :
+une liste de string.
+Action :
+Subdiviser la chaine de caractère en fct du nombre de machine afin de 
+répartir au mieux la charge
+Astuce : taille en octet % nb de machine. puis décallé aux caractère " " suivant.
+
+Fct Distribution :
+Action : s'occupe d'établir la connexion avec chaque machine et de fournir
+un exemplaire du chaque split. s'assurer que chaque machine a bien reçu le split.
+Astuce : pensez à faire la fonction sur la machine distante qui recevra le split
+
+Fct Map : OK
+Entrée :
+une string
+Sortie :
+une liste de dictionnaire
+Action :
+subdiviser la string en mot (on prend en compte que les " ") générer une clé
+par mot pas de notion d'unicité.
+
+Fct Shuffle : ok (non gestion des anagramme)
+Entrée : 
+un dico
+sortie :
+un dico avec val modifié
+Action :
+on appel la fct hashage avec un mot. cette valeur modulo nb machine +1
+on met cette valeur dans le dico
+
+Fct Hashage : ok (fct python)
+Entrée :
+un mot
+Sortie : 
+une valeure
+Action :
+Transforme une chaine de caractère en valeure unique.
+chaque lettre à une valeur. on rajoute une pondération par position
+on additionne l'ensemble.
+
+Fct distribution : 
+Entrée :
+un dict {mot:val}+val
+Sortie :
+Néant
+Action :
+On envoie l'ensemble des clés avec leur val à la machine indexé par val
+NB : pensez à faire la fonction qui recevra les clés.
+
+Fct Reduce :
+Entrée :
+une liste de dict {clé:val}
+Sortie :
+un dict {clé:Val}
+Action :
+on génère un dictionnaire unique {clé:nb d'itération}
+
+Fct Concat :
+Entrée :
+L'ensemble des dictionnaire unique
+Sortie :
+Un fichier .txt
+Action :
+On écrit chaque dictionnaire dans un fichier.
