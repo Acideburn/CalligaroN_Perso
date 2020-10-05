@@ -7,6 +7,8 @@ rend un obj CompletedProcess contenant le returncode!=0 stdout (vide), sdterr (l
 import subprocess
 import sys
 
+
+
 #print ("je suis un process distant")
 test = subprocess.run("dire", shell=True,capture_output=True)
 print (test)
