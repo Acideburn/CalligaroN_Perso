@@ -1,4 +1,0 @@
-name: ENVNAME
-channels:
-  - defaults
-prefix: E:\Anaconda\envs\ENVNAME
